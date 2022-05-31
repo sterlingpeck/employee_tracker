@@ -79,7 +79,7 @@ const beginPrompt = () => {
     });
 };
 
-const addDepartmentPrompt = (callback) => {
+const addDepartmentOpt = (callback) => {
   return inquirer
     .prompt({
       type: "input",
@@ -91,7 +91,7 @@ const addDepartmentPrompt = (callback) => {
     });
 };
 
-const addRolePrompt = () => {
+const addRoleOpt = () => {
   return inquirer
     .prompt([
       {
@@ -116,7 +116,7 @@ const addRolePrompt = () => {
     });
 };
 
-const addEmployeePrompt = () => {
+const addEmployeeOpt = () => {
   return inquirer
     .prompt([
       {
@@ -147,7 +147,7 @@ const addEmployeePrompt = () => {
     });
 };
 
-const updateEmployeeRolePrompt = () => {
+const updateEmployeeRoleOpt = () => {
   return inquirer
     .prompt([
       {
@@ -169,7 +169,6 @@ const updateEmployeeRolePrompt = () => {
 };
 
 const getDepartments = () => {
-  // const sql = `SELECT d.id, d.name, SUM(r.salary) AS department_expenses FROM departments d LEFT JOIN roles r ON r.dep_id = d.id GROUP BY d.id;`;
   const sql = `SELECT * FROM departments`;
   db.query(sql, (err, rows) => {
     if (err) {
@@ -280,17 +279,17 @@ const initialize = () => {
         getEmployees();
         break;
       case "Add a department":
-        addDepartmentPrompt();
+        addDepartmentOpt();
         break;
       case "Add a role":
-        addRolePrompt();
+        addRoleOpt();
         break;
       case "Add an employee":
-        addEmployeePrompt();
+        addEmployeeOpt();
         break;
       case "Update an employee role":
-        updateEmployeeRolePrompt();
-
+        updateEmployeeRoleOpt();
+        break;
       case "Quit":
         quit();
     }
