@@ -76,7 +76,6 @@ const beginPrompt = () => {
       ],
     })
     .then((userChoice) => {
-      console.log("tessst", userChoice);
       return userChoice;
     });
 };
@@ -272,7 +271,6 @@ const initialize = () => {
   beginPrompt().then((userChoice) => {
     switch (userChoice.mainMenu) {
       case "View Departments":
-        debugger;
         getDepartments();
         break;
       case "View Roles":
