@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { Console } = require("console");
 const inquirer = require("inquirer");
 const db = require("./data/link.js");
 
@@ -75,6 +76,7 @@ const beginPrompt = () => {
       ],
     })
     .then((userChoice) => {
+      console.log("tessst", userChoice);
       return userChoice;
     });
 };
@@ -268,26 +270,27 @@ const initialize = () => {
   getRolesInit();
   getEmployeesInit();
   beginPrompt().then((userChoice) => {
-    switch (userChoice.mainMenuChoice) {
-      case "View all departments":
+    switch (userChoice.mainMenu) {
+      case "View Departments":
+        debugger;
         getDepartments();
         break;
-      case "View all roles":
+      case "View Roles":
         getRoles();
         break;
-      case "View all employees":
+      case "View Employees":
         getEmployees();
         break;
-      case "Add a department":
+      case "Add Department":
         addDepartmentOpt();
         break;
-      case "Add a role":
+      case "Add Role":
         addRoleOpt();
         break;
-      case "Add an employee":
+      case "Add Employee":
         addEmployeeOpt();
         break;
-      case "Update an employee role":
+      case "Update Employee Role":
         updateEmployeeRoleOpt();
         break;
       case "Quit":
